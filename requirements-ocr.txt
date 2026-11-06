@@ -1,0 +1,12 @@
+# OCR engines. Opt-in: pip install -r requirements-ocr.txt
+#
+# pytesseract requires the Tesseract OCR system binary:
+#   Linux : sudo apt install tesseract-ocr
+#   Windows: https://github.com/UB-Mannheim/tesseract/wiki
+#   macOS  : brew install tesseract
+# easyocr bundles its own models but downloads a ~64MB detector model on first use.
+#
+# Docker installs requirements.txt + this file, because the image ships the
+# Tesseract binary and OCR_ENGINE=tesseract is the production default.
+pytesseract>=0.3.10
+easyocr>=1.7.0

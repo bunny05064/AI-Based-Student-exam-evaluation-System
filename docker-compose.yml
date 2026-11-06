@@ -1,0 +1,48 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_ENV=production
+      # The image defaults to MODEL_MODE=production, but compose starts in
+      # development on purpose: no trained bundle is committed, so a production
+      # container would refuse to start (MODEL_PRELOAD=true fails loudly) until
+      # you mount a real bundle via ./models. Set MODEL_MODE=production in .env
+      # once models/model/ holds a trained bundle.
+      - MODEL_MODE=${MODEL_MODE:-development}
+      - MODEL_PRELOAD=true
+      # Override in a .env file before deploying: the app refuses to start in
+      # production with the shipped default secret.
+      - SECRET_KEY=${SECRET_KEY:?set SECRET_KEY in .env - see .env.example}
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-app}@db:5432/${POSTGRES_DB:-answer_eval}
+      - LOG_LEVEL=INFO
+      - OCR_ENGINE=${OCR_ENGINE:-tesseract}
+      - MAX_UPLOAD_MB=10
+      # Default is same-origin only. Use an explicit comma-separated list to
+      # let a separate frontend call the API.
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:8000}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./models:/app/models
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-app}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-app}
+      - POSTGRES_DB=${POSTGRES_DB:-answer_eval}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-app} -d ${POSTGRES_DB:-answer_eval}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:

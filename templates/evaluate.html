@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluate - AI Student Answer Evaluator</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a class="brand" href="/">📚 AI Answer Evaluator</a>
+    <div class="nav-links">
+      <a href="/evaluate" class="active">Evaluate</a>
+      <a href="/dashboard">Dashboard</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>Evaluate an Answer</h1>
+    <p class="mode-note" id="mode-note"></p>
+
+    <section class="card">
+      <h2>Question</h2>
+      <input
+        type="text"
+        id="question"
+        placeholder="e.g. Explain Newton's Second Law of Motion."
+        maxlength="2000"
+        autocomplete="off">
+    </section>
+
+    <section class="card">
+      <h2>Answer</h2>
+      <textarea
+        id="answer"
+        rows="6"
+        maxlength="10000"
+        placeholder="Type the descriptive answer here..."></textarea>
+
+      <div class="divider"><span>OR</span></div>
+
+      <div class="upload-row">
+        <label class="btn btn-outline" for="image-input">📷 Upload handwritten answer</label>
+        <input type="file" id="image-input" accept=".jpg,.jpeg,.png,.gif,.bmp,.webp,.pdf" hidden>
+        <span class="upload-hint" id="upload-hint">JPG, PNG, PDF up to 10 MB</span>
+        <span class="file-chosen" id="file-chosen"></span>
+        <button type="button" class="btn btn-outline hidden" id="file-clear">Clear file</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Options</h2>
+      <div class="options-row">
+        <div class="field">
+          <label for="max-score">Maximum Marks</label>
+          <input type="number" id="max-score" value="10" min="1" max="100">
+        </div>
+        <div class="field">
+          <label for="subject">Subject (optional)</label>
+          <input type="text" id="subject" placeholder="e.g. Physics" maxlength="120">
+        </div>
+        <div class="field">
+          <label for="student-picker">Existing student (optional)</label>
+          <select id="student-picker"></select>
+        </div>
+        <div class="field">
+          <label for="student-name">Student name (optional)</label>
+          <input type="text" id="student-name" placeholder="e.g. Ayush" maxlength="120">
+        </div>
+      </div>
+      <p class="muted">
+        Leave the name blank to evaluate without tracking progress. Choosing an
+        existing student fills the name field; typing a different name creates a
+        new student.
+      </p>
+
+      <div class="field">
+        <label for="rubric">Rubric (optional JSON)</label>
+        <textarea
+          id="rubric"
+          rows="5"
+          maxlength="8000"
+          placeholder='{"concepts": [{"name": "force", "weight": 2}, {"name": "acceleration", "weight": 1}]}'></textarea>
+        <p class="muted">
+          Leave blank to use the built-in rubric for the question. Weights are
+          relative; they are normalised to the maximum marks.
+        </p>
+      </div>
+
+      <button class="btn btn-primary btn-lg" id="eval-btn" onclick="evaluatePage.run()">
+        Evaluate Answer
+      </button>
+      <div class="error-banner hidden" id="error-banner"></div>
+      <div class="loading hidden" id="loading">
+        <span class="spinner"></span> Evaluating ... (may take a few seconds)
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Scores are AI-assisted decision support, not a replacement for human evaluation.
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/evaluate.js"></script>
+  <script>
+    app.showModelMode();
+    evaluatePage.init();
+  </script>
+</body>
+</html>

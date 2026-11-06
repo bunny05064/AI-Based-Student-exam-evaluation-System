@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Which gas do plants absorb during photosynthesis?",
+    "correct_answer": "carbon dioxide",
+    "incorrect_answer": "oxygen",
+    "student_answer": "Plants absorb a gas from the air during this process."
+  },
+  {
+    "question": "Which gas do plants absorb during photosynthesis?",
+    "correct_answer": "carbon dioxide",
+    "incorrect_answer": "nitrogen",
+    "student_answer": "I think it is nitrogen from the atmosphere."
+  },
+  {
+    "question": "What is the powerhouse of the cell?",
+    "reference_answer": "the mitochondrion",
+    "SA": [
+      "The mitochondrion is the powerhouse of the cell.",
+      "It is not the nucleus that makes energy."
+    ]
+  }
+]

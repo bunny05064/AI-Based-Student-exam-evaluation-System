@@ -1,0 +1,5 @@
+essay_set,essay,domain1_score,domain2_score,student_id,essay_id,prompt_id
+1,"Placeholder argument text written for a parser fixture. It argues that a policy change deserves support.",7,8,1001,50001,1
+1,"Opposing placeholder text for a parser fixture. It argues against the same policy change.",4,5,1002,50002,1
+2,"Second prompt set placeholder text used only to check the prompt join works.",9,9,1003,50003,2
+8,"Placeholder narrative text for set eight, present to check multi-set handling.",6,7,1004,50004,8

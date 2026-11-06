@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Student Answer Evaluator</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a class="brand" href="/">📚 AI Answer Evaluator</a>
+    <div class="nav-links">
+      <a href="/evaluate">Evaluate</a>
+      <a href="/dashboard">Dashboard</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>Explainable AI Student Answer Evaluation</h1>
+    <p>
+      Evaluates descriptive answers, extracts <strong>correct / missing / incorrect</strong> concepts,
+      scores against a rubric, and produces <strong>personalized learning feedback</strong>.
+    </p>
+    <p class="mode-note" id="mode-note"></p>
+    <a class="btn btn-primary btn-lg" href="/evaluate">Start evaluating answers →</a>
+  </header>
+
+  <main class="grid-3">
+    <section class="card feature">
+      <h3>🎯 Concept-Level Grading</h3>
+      <p>
+        Every score is backed by per-concept evidence - which concepts were found,
+        which are missing, and the exact sentence of the answer used as proof.
+      </p>
+    </section>
+    <section class="card feature">
+      <h3>🧾 Handwritten answers</h3>
+      <p>
+        Upload a photograph of a handwritten answer or a PDF; OCR extracts the text
+        and the same explainable pipeline grades it.
+      </p>
+    </section>
+    <section class="card feature">
+      <h3>🧭 Personalized learning</h3>
+      <p>
+        Builds a concept mastery profile per student and recommends weak topics
+        with practice questions.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    AI-assisted automated evaluation - scores are decision support, they do not
+    replace human judgment in high-stakes exams.
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    app.showModelMode();
+  </script>
+</body>
+</html>

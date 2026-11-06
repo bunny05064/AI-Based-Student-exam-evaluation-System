@@ -1,0 +1,7 @@
+# Heavy ML stack used for transformer training/inference.
+# Install ONLY if you have the hardware/time: pip install -r requirements-ml.txt
+# Without these, the app runs in development mode with a classical TF-IDF
+# embedding pipeline (real, deterministic similarity - clearly labelled).
+torch>=2.1
+transformers>=4.40
+sentence-transformers>=3.0

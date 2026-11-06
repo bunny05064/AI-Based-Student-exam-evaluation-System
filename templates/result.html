@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result - AI Student Answer Evaluator</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a class="brand" href="/">📚 AI Answer Evaluator</a>
+    <div class="nav-links">
+      <a href="/evaluate">Evaluate</a>
+      <a href="/dashboard">Dashboard</a>
+    </div>
+  </nav>
+
+  <main class="container" id="result-root">
+    <div class="loading" id="loading-holder">
+      <span class="spinner"></span> Loading result ...
+    </div>
+  </main>
+
+  <footer class="footer">
+    Scores are AI-assisted decision support, not a replacement for human evaluation.
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/result.js"></script>
+  <script>
+    resultPage.init();
+  </script>
+</body>
+</html>

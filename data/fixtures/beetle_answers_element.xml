@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SYNTHETIC FORMAT FIXTURE - NOT BEETLEEVAL DATA.
+  Shape: one <student-answer> child element per graded answer, text as element
+  content. Included to prove the element-style path still works alongside the
+  attribute-style path.
+-->
+<answers>
+  <question>What is the boiling point of water at sea level?</question>
+  <reference>100 degrees Celsius</reference>
+  <student-answer label="correct">Water boils at one hundred degrees Celsius at sea level.</student-answer>
+  <student-answer label="incorrect">Water boils at fifty degrees Celsius.</student-answer>
+  <student-answer label="correct">At sea level water boils at 100 C.</student-answer>
+</answers>

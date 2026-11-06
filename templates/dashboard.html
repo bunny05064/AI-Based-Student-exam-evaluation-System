@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - AI Student Answer Evaluator</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a class="brand" href="/">📚 AI Answer Evaluator</a>
+    <div class="nav-links">
+      <a href="/evaluate">Evaluate</a>
+      <a href="/dashboard" class="active">Dashboard</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>Student Progress</h1>
+
+    <section class="card">
+      <label for="student-picker">Choose a student</label>
+      <div class="options-row">
+        <select id="student-picker"></select>
+        <div class="field">
+          <label for="student-id">Student ID</label>
+          <input type="number" id="student-id" min="1" placeholder="e.g. 1">
+        </div>
+        <button class="btn btn-primary" onclick="dashboardPage.load()">Load progress</button>
+      </div>
+      <p class="muted">
+        Students are listed newest first. The ID field is filled automatically
+        when you pick one above.
+      </p>
+      <div class="error-banner hidden" id="error-banner"></div>
+    </section>
+
+    <div id="dashboard-root">
+      <p class="muted">Choose a student above, or enter a student ID and click "Load progress".</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    Scores are AI-assisted decision support, not a replacement for human evaluation.
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/dashboard.js"></script>
+  <script>
+    dashboardPage.init();
+  </script>
+</body>
+</html>
